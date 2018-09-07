@@ -1,0 +1,66 @@
+{% extends "todos/layouts.html" %}
+
+{% block body %}
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-3">Webpy</h1>
+        <p class="lead">Webpy is an Todo app that was made in Python (Django Framework). Please feel free to use this
+            and fork this project.</p>
+        <hr class="my-2">
+        <p class="lead">
+            <a class="btn btn-primary btn-lg" href="https://github.com/anburocky3" role="button">More info</a>
+        </p>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="card">
+                <div class="card-header bg-dark text-white">
+                    Todo Lists
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered table-inverse">
+                        <thead class="t-heads-inverse">
+                            <tr>
+                                <th> Task name</th>
+                                <th width="30"> Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for list in lists %}
+                            <tr>
+                                <td><a href="tasks/{{ list.id }}">{{ list.title }}</a></td>
+                                {% if list.status == 1 %}
+                                <td><span class="badge badge-success"> Fresh </span></td>
+                                {% endif %}
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    What will the project do?
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Glad you are interested in this DIY app.</p>
+                    <p>Todo app with following fields</p>
+                    <ol>
+                        <li>Todo Title</li>
+                        <li>Todo description</li>
+                        <li>Todo Status <br> (Fresh, Progress, Hold, Done)</li>
+                    </ol>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
